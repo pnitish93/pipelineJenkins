@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Develop') {
+            steps {
+                echo 'Developed the code'
+            }
+        }
+        stage('Build') {
+            steps {
+                echo 'Building the code'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing the code'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying the code to production'
+            }
+        }
+        stage('Notify') {
+            steps {
+                emailext body: '''Hello,
+
+This is the demo email. Please see the mail after building the job.
+
+Thanks''', subject: 'Demo sent status', to: 'pnitish93@gmail.com'
+            }
+        }
+    }
+}
